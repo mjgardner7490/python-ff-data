@@ -61,12 +61,30 @@ rb_df = df.loc[(df['Pos'] == 'RB', base_columns + rushing_columns)]
 
 
 ## Sort by RushingYds
-rb_df = rb_df.sort_values(by='RushingYds', ascending=False)
+# rb_df = rb_df.sort_values(by='RushingYds', ascending=False)
 # print(rb_df.head(15))
 
 
 ## Get descriptive stats about df and transpose them
-print(rb_df.describe().transpose())
+# print(rb_df.describe().transpose())
 
 
+## Get a Series object, or column, from df
+# print(rb_df['RushingAtt'][:10])
 
+
+## Pring max, std deviation, min, and quantiles of a Series column
+# print(rb_df['RushingAtt'].max())
+# print(rb_df['RushingAtt'].std())
+# print(rb_df['RushingAtt'].min())
+# print(rb_df['RushingAtt'].quantile(0.75))
+# print(rb_df['RushingAtt'].quantile(0.25))
+
+
+## Create a rank column for RushingTD and sort descending
+rb_df['RushingTDRank'] = rb_df['RushingTD'].rank(ascending=False)
+# print(rb_df.sort_values(by='RushingTDRank').head(5))
+
+
+## Count the occurance for each Team on a Series
+# print(rb_df['Team'].value_counts())
